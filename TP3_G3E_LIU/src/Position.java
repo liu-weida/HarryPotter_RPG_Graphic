@@ -1,9 +1,9 @@
-public class Position {
+public class Position {   //定义棋子的位置（数字+字母）
     private char col;
     private int row;
 
 
-    public Position(char column, int row) {
+    public Position(char column, int row) { //构造方法
         this.col = column;
         this.row = row;
     }

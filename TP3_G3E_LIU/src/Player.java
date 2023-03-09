@@ -1,8 +1,8 @@
-public class Player {
+public class Player {   //定义玩家的姓名和颜色
     private String name;
     private int color;
 
-    public Player(String name, int color) {
+    public Player(String name, int color) {   //构造方法,初始化
         this.name = name;
         this.color = color;
     }
