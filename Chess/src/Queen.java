@@ -4,7 +4,8 @@ public class Queen extends Piece {
     }
     public boolean isValidMove(Position newPosition, Cell[][] board) {
 
-        return false;
+        return true;
+        //return false;
     }
 
     public String toString() {
