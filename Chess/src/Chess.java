@@ -147,9 +147,10 @@ public class Chess {
 
 
         private boolean isValidMove (String move){ //验证棋子的移动是否合理 Vérifiez que le mouvement des pièces est logique
-                                //因为我完全不会下国际象棋，所以也不知道该怎么验证棋子的移动是否合理，所以现在棋子可以无视规则运动
-                                //Comme je ne joue pas du tout aux échecs, je ne sais pas comment vérifier que le mouvement des pièces est logique,
-                                    // de sorte que les pièces peuvent maintenant se déplacer sans tenir compte des règles.
+                                    //可以验证棋子的移动是否符合规则。
+                                    //Il est possible de vérifier que le déplacement d'une pièce est conforme aux règles.
+                                    //但是存在一些小问题。
+                                    //Mais il y a quelques problèmes mineurs.
 
                 String[] positions = move.split("");
             char piece = positions[0].charAt(0);
@@ -186,62 +187,62 @@ public class Chess {
             switch (piece){//判断移动是否符合规则
                 case 'K':
                     Piece king = new King(Position,pieceStart.getColor());
-                    isValid = king.isValidMove(newPosition, board);
+                    isValid = king.isValidMove(Position,newPosition, board);
                     if (!isValid) {System.out.println("Votre action n'est pas conforme aux règles du jeu, veuillez revenir.");}
                     return isValid;
                 case 'Q':
                     Piece queen = new Queen(Position,pieceStart.getColor());
-                    isValid = queen.isValidMove(newPosition, board);
+                    isValid = queen.isValidMove(Position,newPosition, board);
                     if (!isValid) {System.out.println("Votre action n'est pas conforme aux règles du jeu, veuillez revenir.");}
                     return isValid;
                 case 'B':
                     Piece bishop = new Bishop(Position,pieceStart.getColor());
-                    isValid = bishop.isValidMove(newPosition, board);
+                    isValid = bishop.isValidMove(Position,newPosition, board);
                     if (!isValid) {System.out.println("Votre action n'est pas conforme aux règles du jeu, veuillez revenir.");}
                     return isValid;
                 case 'N':
                     Piece knight = new Knight(Position,pieceStart.getColor());
-                    isValid = knight.isValidMove(newPosition, board);
+                    isValid = knight.isValidMove(Position,newPosition, board);
                     if (!isValid) {System.out.println("Votre action n'est pas conforme aux règles du jeu, veuillez revenir.");}
                     return isValid;
                 case 'R':
                     Piece rook = new Rook(Position,pieceStart.getColor());
-                    isValid = rook.isValidMove(newPosition, board);
+                    isValid = rook.isValidMove(Position,newPosition, board);
                     if (!isValid) {System.out.println("Votre action n'est pas conforme aux règles du jeu, veuillez revenir.");}
                     return isValid;
                 case 'P':
                     Piece pawn = new Pawn(Position,pieceStart.getColor());
-                    isValid = pawn.isValidMove(newPosition, board);
+                    isValid = pawn.isValidMove(Position,newPosition, board);
                     if (!isValid) {System.out.println("Votre action n'est pas conforme aux règles du jeu, veuillez revenir.");}
                     return isValid;
                 case 'k':
                     king = new King(Position,pieceStart.getColor());
-                    isValid = king.isValidMove(newPosition, board);
+                    isValid = king.isValidMove(Position,newPosition, board);
                     if (!isValid) {System.out.println("Votre action n'est pas conforme aux règles du jeu, veuillez revenir.");}
                     return isValid;
                 case 'q':
                     queen = new Queen(Position,pieceStart.getColor());
-                    isValid = queen.isValidMove(newPosition, board);
+                    isValid = queen.isValidMove(Position,newPosition, board);
                     if (!isValid) {System.out.println("Votre action n'est pas conforme aux règles du jeu, veuillez revenir.");}
                     return isValid;
                 case 'b':
                     bishop = new Bishop(Position,pieceStart.getColor());
-                    isValid = bishop.isValidMove(newPosition, board);
+                    isValid = bishop.isValidMove(Position,newPosition, board);
                     if (!isValid) {System.out.println("Votre action n'est pas conforme aux règles du jeu, veuillez revenir.");}
                     return isValid;
                 case 'n':
                     knight = new Knight(Position,pieceStart.getColor());
-                    isValid = knight.isValidMove(newPosition, board);
+                    isValid = knight.isValidMove(Position,newPosition, board);
                     if (!isValid) {System.out.println("Votre action n'est pas conforme aux règles du jeu, veuillez revenir.");}
                     return isValid;
                 case 'r':
                     rook = new Rook(Position,pieceStart.getColor());
-                    isValid = rook.isValidMove(newPosition, board);
+                    isValid = rook.isValidMove(Position,newPosition, board);
                     if (!isValid) {System.out.println("Votre action n'est pas conforme aux règles du jeu, veuillez revenir.");}
                     return isValid;
                 case 'p':
                     pawn = new Pawn(Position,pieceStart.getColor());
-                    isValid = pawn.isValidMove(newPosition, board);
+                    isValid = pawn.isValidMove(Position,newPosition, board);
                     if (!isValid) {System.out.println("Votre action n'est pas conforme aux règles du jeu, veuillez revenir.");}
                     return isValid;
             }

@@ -8,7 +8,7 @@ public abstract class Piece { //定义棋子的属性（位置，颜色）
     }
 
     //public abstract boolean isValidMove(Position newPosition, Cell[][] board);
-    public abstract boolean isValidMove(Position newPosition, Cell[][] board);
+    public abstract boolean isValidMove(Position Position,Position newPosition, Cell[][] board);
 
     public abstract String toString();
 

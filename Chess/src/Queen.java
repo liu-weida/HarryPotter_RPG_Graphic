@@ -2,7 +2,7 @@ public class Queen extends Piece {
     public Queen(Position position, int color) {
         super(position, color);
     }
-    public boolean isValidMove(Position newPosition, Cell[][] board) {
+    public boolean isValidMove(Position Position,Position newPosition, Cell[][] board) {
 
         return true;
         //return false;

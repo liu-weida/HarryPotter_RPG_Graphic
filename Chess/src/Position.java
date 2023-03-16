@@ -21,7 +21,7 @@ public class Position {   //定义棋子的位置（数字+字母）
         return row;
     }
 
-    public int getCol() {
+    public char getCol() {
         return col;
     }
 
