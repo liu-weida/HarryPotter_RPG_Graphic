@@ -7,13 +7,13 @@ public class Spell extends AbstractSpell {
         super(name, damage, precise);
     }
 
-    public static final Spell reducto = new Spell("Reducto", 40, 0.6f);//粉身碎骨
-    private static final Spell confringo = new Spell("Confringo", 50, 0.6f);//霹雳爆炸
-    private static final Spell locomotorMortis = new Spell("Locomotor mortis", 10, 0.4f);//腿立僵
-    private static final Spell diffindo = new Spell("Diffindo", 50, 0.5f);//四分五裂
-    private static final Spell incendio = new Spell("Incendio", 50, 0.5f);//火焰熊熊
-    private static final Spell deprimo = new Spell("Deprimo", 50, 0.5f);//房塌地陷
-    private static final Spell expulso = new Spell("Expulso", 60, 0.5f);//房塌地陷
+    public static final Spell reducto = new Spell("Reducto", 10, 0.8f);//粉身碎骨
+    public static final Spell confringo = new Spell("Confringo", 15, 0.85f);//霹雳爆炸
+    public static final Spell locomotorMortis = new Spell("Locomotor mortis", 25, 0.75f);//腿立僵
+    public static final Spell diffindo = new Spell("Diffindo", 35, 0.7f);//四分五裂
+    public static final Spell incendio = new Spell("Incendio", 50, 0.65f);//火焰熊熊
+    public static final Spell deprimo = new Spell("Deprimo", 70, 0.6f);//房塌地陷
+    public static final Spell expulso = new Spell("Expulso", 90, 0.55f);//房塌地陷
     public static void getSpell(){
         System.out.println("1."+reducto);
         System.out.println("2."+confringo);

@@ -17,10 +17,10 @@ public class House { //学院
         this.preciseBonus = preciseBonus;
     }
 
-    public static final House Hufflepuff = new House("Hufflepuff", 1, 0, 0, 0);
-    public static final House Slytherin = new House("Slytherin", 0, 1, 0, 0);
-    public static final House Gryffindor = new House("Gryffindor", 0, 0, 1, 0);
-    public static final House Ravenclaw = new House("Ravenclaw", 0, 0, 0, 1);
+    public static final House Hufflepuff = new House("Hufflepuff", 20, 0, 0, 0);
+    public static final House Slytherin = new House("Slytherin", 0, 10, 0, 0);
+    public static final House Gryffindor = new House("Gryffindor", 0, 0, 10, 0);
+    public static final House Ravenclaw = new House("Ravenclaw", 0, 0, 0, 10);
 
     public String getName() {
         return name;

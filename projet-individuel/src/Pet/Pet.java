@@ -3,10 +3,10 @@ package Pet;
 import Wand.Wand;
 
 public enum Pet {
-    OWL(1, 0, 0, 0),
-    RAT(0, 0, 0, 1),
-    CAT(0, 1, 0, 6),
-    TOAD(0, 0, 1, 0);
+    OWL(10, 0, 0, 0),
+    RAT(0, 0, 0, 5),
+    CAT(0, 5, 0, 6),
+    TOAD(0, 0, 5, 0);
 
     private int pharmacyBonus;
     private int attackBonus;

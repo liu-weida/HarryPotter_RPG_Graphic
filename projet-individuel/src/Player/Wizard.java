@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Random;
 
 public class Wizard extends Character {
-    private Pet pet;
-    private Wand wand;
-    private House house;
+    public Pet pet;
+    public Wand wand;
+    public House house;
     private List<Spell> knownSpells;
     private List<ForbiddenSpell> knownForbiddenSpells;
     private List<ApplySpell> knownApplySpell;
@@ -85,9 +85,10 @@ public class Wizard extends Character {
     public void attack(Wizard wizard, Character enemy, Spell spell) {
         Random random = new Random();
         double number = random.nextDouble();
-        if (number < wizard.getPrecise()) {
-            int enemyHP = enemy.getHP() - (spell.getDamage() * wizard.getAttack());
-            System.out.println("You have dealt "+(spell.getDamage() * wizard.getAttack())+" points of damage to "+enemy.getName()+"!");
+        if (number < wizard.getPrecise()+wizard.getPrecise()*0.05) {
+            int injury = (int)((spell.getDamage() + wizard.getAttack())*((100-(enemy.getDefense()))*0.01));
+            int enemyHP = enemy.getHP() - injury;
+            System.out.println("You have dealt "+injury+" points of damage to "+enemy.getName()+"!");
             enemy.setHP(enemyHP);
             System.out.println("The "+enemy.getName()+" has "+enemyHP+" HP points left.");
         }else {
@@ -95,17 +96,18 @@ public class Wizard extends Character {
         }
     }
     public void usePotion(Wizard wizard, Potion potion){
-        int HP = wizard.getHP()+(potion.getAddHP()*wizard.getPharmacy());
-        wizard.setHP(HP);
-        System.out.println("You have used "+potion.getName()+" and your HP has increased by "+(potion.getAddHP()*wizard.getPharmacy())+" points!");
-        System.out.println("Your current HP is "+wizard.getHP()+" points.");
+        int HP = Game.property[1]+(potion.getAddHP()+(int)(potion.getAddHP()*wizard.getPharmacy()*0.1));
+        Game.property[1] = HP;
+        System.out.println("You have used "+potion.getName()+" and your HP has increased by "+(potion.getAddHP()+(int)(potion.getAddHP()*wizard.getPharmacy()*0.1))+" points!");
+        System.out.println("Your current HP is "+Game.property[1]+" points.");
     }
     public void forbiddenAttack(Wizard wizard, Character enemy, ForbiddenSpell forbiddenSpell) {
         Random random = new Random();
         double number = random.nextDouble();
-        if (number < wizard.getPrecise()*0.1) {
-            int enemyHP = enemy.getHP() - (forbiddenSpell.getDamage() * wizard.getAttack());
-            System.out.println("You have dealt "+(forbiddenSpell.getDamage() * wizard.getAttack())+" points of damage to "+enemy.getName()+"!");
+        if (number < wizard.getPrecise()+wizard.getPrecise()*0.05) {
+            int injury = (int)((forbiddenSpell.getDamage() + wizard.getAttack())*((100-(enemy.getDefense()))*0.01));
+            int enemyHP = enemy.getHP() - injury;
+            System.out.println("You have dealt "+injury+" points of damage to "+enemy.getName()+"!");
             enemy.setHP(enemyHP);
             System.out.println("The "+enemy.getName()+" has "+enemyHP+" HP points left.");
         }else {
@@ -116,7 +118,7 @@ public class Wizard extends Character {
         System.out.println("You have chosen to defend.");
         Random random = new Random();
         double number = random.nextDouble();
-        if (number <= 0.8f){
+        if (number <= 0.6f){
             System.out.println("The defense was successful and you received no damage.");
         }else {
             System.out.println("Defensive failure.");
