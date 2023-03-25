@@ -1,6 +1,7 @@
 package Player;
+
 import Character.Character;
-import Enemy.Enemy;
+import Game.Game;
 import Pet.Pet;
 import Wand.Wand;
 import House.House;
@@ -8,6 +9,7 @@ import Spell.Spell;
 import Spell.ForbiddenSpell;
 import Spell.ApplySpell;
 import Potion.Potion;
+import Enemy.Enemy;
 import java.util.List;
 import java.util.Random;
 
@@ -80,11 +82,6 @@ public class Wizard extends Character {
         this.potions = potions;
     }
 
-    public void defend() {
-        // Implementation of defend method goes here
-    }
-
-
     public void attack(Wizard wizard, Character enemy, Spell spell) {
         Random random = new Random();
         double number = random.nextDouble();
@@ -106,13 +103,24 @@ public class Wizard extends Character {
     public void forbiddenAttack(Wizard wizard, Character enemy, ForbiddenSpell forbiddenSpell) {
         Random random = new Random();
         double number = random.nextDouble();
-        if (number < wizard.getPrecise()) {
+        if (number < wizard.getPrecise()*0.1) {
             int enemyHP = enemy.getHP() - (forbiddenSpell.getDamage() * wizard.getAttack());
             System.out.println("You have dealt "+(forbiddenSpell.getDamage() * wizard.getAttack())+" points of damage to "+enemy.getName()+"!");
             enemy.setHP(enemyHP);
             System.out.println("The "+enemy.getName()+" has "+enemyHP+" HP points left.");
         }else {
             System.out.println("The magic spell did not hit.");
+        }
+    }
+    public static void defend(Character enemy) {
+        System.out.println("You have chosen to defend.");
+        Random random = new Random();
+        double number = random.nextDouble();
+        if (number <= 0.8f){
+            System.out.println("The defense was successful and you received no damage.");
+        }else {
+            System.out.println("Defensive failure.");
+            enemy.attack(Game.wizard, enemy, Game.spells.get(0));
         }
     }
 }

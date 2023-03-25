@@ -17,10 +17,10 @@ public class House { //学院
         this.preciseBonus = preciseBonus;
     }
 
-    private static final House Hufflepuff = new House("Hufflepuff", 1, 0, 0, 0);
-    private static final House Slytherin = new House("Slytherin", 0, 1, 0, 0);
-    private static final House Gryffindor = new House("Gryffindor", 0, 0, 1, 0);
-    private static final House Ravenclaw = new House("Ravenclaw", 0, 0, 0, 1);
+    public static final House Hufflepuff = new House("Hufflepuff", 1, 0, 0, 0);
+    public static final House Slytherin = new House("Slytherin", 0, 1, 0, 0);
+    public static final House Gryffindor = new House("Gryffindor", 0, 0, 1, 0);
+    public static final House Ravenclaw = new House("Ravenclaw", 0, 0, 0, 1);
 
     public String getName() {
         return name;
@@ -41,22 +41,7 @@ public class House { //学院
         return preciseBonus;
     }
 
-    public static House getRandomHome() {
-        Random random = new Random();
-        int randomNumber = random.nextInt(4);
-        switch (randomNumber) {
-            case 0:
-                return Hufflepuff;
-            case 1:
-                return Slytherin;
-            case 2:
-                return Gryffindor;
-            case 3:
-                return Ravenclaw;
-            default:
-                return null;
-        }
-    }
+
     public String toString(){
         return name;
     }
