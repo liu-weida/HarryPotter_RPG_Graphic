@@ -21,9 +21,9 @@ public class Boss extends AbstractEnemy {
     public static final Boss dementor = new Boss(400, 400,"Dementor", 5, 65, 30, 30, 1,new ArrayList<Spell>(Arrays.asList(Spell.incendio)),75);
     public static final Boss peterPettigrew = new Boss(500,500, "Peter Pettigrew", 5, 80, 40, 35, 1,new ArrayList<Spell>(Arrays.asList(Spell.incendio)),100);
     public static final Boss doloresOmbrage = new Boss(600, 600,"Dolores Ombrage", 5, 100, 50, 40, 1,new ArrayList<Spell>(Arrays.asList(Spell.deprimo)),125);
-    public static final Boss doloresOmbrageLeader = new Boss(750, 750,"Dolores Ombrage Leader", 5, 120, 80, 60, 1,new ArrayList<Spell>(Arrays.asList(Spell.deprimo)),150);
-    public static final Boss bellatrixLestrange = new Boss(900,900, "Bellatrix Lestrange", 5, 150, 80, 60, 1,new ArrayList<Spell>(Arrays.asList(Spell.expulso)),200);
-    public static final Boss voldemort = new Boss(1000, 1000,"Voldemort", 5, 180, 100, 70, 1,new ArrayList<Spell>(Arrays.asList(Spell.expulso)),250);
+    public static final Boss doloresOmbrageLeader = new Boss(750, 750,"Dolores Ombrage Leader", 5, 120, 60, 60, 1,new ArrayList<Spell>(Arrays.asList(Spell.deprimo)),150);
+    public static final Boss bellatrixLestrange = new Boss(900,900, "Bellatrix Lestrange", 5, 150, 60, 60, 1,new ArrayList<Spell>(Arrays.asList(Spell.expulso)),200);
+    public static final Boss voldemort = new Boss(1000, 1000,"Voldemort", 5, 180, 60, 70, 1,new ArrayList<Spell>(Arrays.asList(Spell.expulso)),250);
     public void attack(Wizard wizard, Character boss, Spell spell) {
         Random random = new Random();
         double number = random.nextDouble();

@@ -1,8 +1,5 @@
 package Potion;
 
-import Player.Wizard;
-import Spell.Spell;
-import Wand.Wand;
 
 public class Potion { //药水
     private String name;
@@ -36,10 +33,10 @@ public class Potion { //药水
     }
 
     public static void getPotion() {
-        System.out.println("1." + invigorationDraught);
-        System.out.println("2." + bruiseHealing);
-        System.out.println("3." + bloodrReplenishing);
-        System.out.println("4." + skeleGro);
+        System.out.println("1." + invigorationDraught+"       Need 10 gold");
+        System.out.println("2." + bruiseHealing+"             Need 20 gold");
+        System.out.println("3." + bloodrReplenishing+"         Need 40 gold");
+        System.out.println("4." + skeleGro+"                  Need 80 gold");
     }
     public static Potion choosePotion(int potion) {
         switch (potion) {

@@ -11,9 +11,9 @@ public class ForbiddenSpell extends AbstractSpell {
     private static final ForbiddenSpell crucio = new ForbiddenSpell("Crucio", 150, 0.45f);//钻心剜骨
 
     public static void getForbiddenSpell(){
-        System.out.println("1."+imperio);
-        System.out.println("2."+crucio);
-        System.out.println("3."+avadaKedavra);
+        System.out.println("1."+imperio+"             Need lv.9");
+        System.out.println("2."+crucio+"              Need lv.11");
+        System.out.println("3."+avadaKedavra+"       Need lv.13");
     }
     public static ForbiddenSpell chooseForbiddenSpell(int forbiddenSpell) {
         switch (forbiddenSpell) {

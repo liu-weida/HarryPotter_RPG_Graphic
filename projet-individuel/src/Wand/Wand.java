@@ -81,4 +81,5 @@ public class Wand { //魔杖
     public static int getPreciseBonus() {
         return preciseBonus;
     }
+
 }

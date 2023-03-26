@@ -29,6 +29,13 @@ public class Level {
         System.out.println("After some exploration you came to the door of the dungeon toilet, which seems to have a dangerous atmosphere, whether to enter?");
         System.out.println("1. Enter\n" + "2. Don't enter");
         int chooseEnter = scanner.nextInt();
+        boolean isValidChooseEnter = (chooseEnter == 1)||(chooseEnter == 2);
+        while (!isValidChooseEnter){
+            System.out.println("Wrong input, please reselect.");
+            System.out.println("1. Enter\n" + "2. Don't enter");
+            chooseEnter = scanner.nextInt();
+            isValidChooseEnter = (chooseEnter == 1)||(chooseEnter == 2);
+        }
         if (chooseEnter == 1){
             System.out.println("After thinking about it, you decide to enter the dungeon toilet full of danger.");
             Game.waitForInput();
@@ -211,6 +218,13 @@ public class Level {
             System.out.println("You feel extreme fear at the sight of the incoming hordes of Death Eaters.\nYou begin to hesitate to join the Death Eaters and become a traitor to Hogwarts.");
             System.out.println("1. Join the Death Eaters.\n2. Fight to the death to protect Hogwarts.");
             int choose = scanner.nextInt();
+            boolean isValidChoose = (choose == 1)||(choose == 2);
+            while (!isValidChoose){
+                System.out.println("Wrong input, please reselect.");
+                System.out.println("1. Join the Death Eaters.\n2. Fight to the death to protect Hogwarts.");
+                choose = scanner.nextInt();
+                isValidChoose = (choose == 1)||(choose == 2);
+            }
             if (choose == 1) {
                 System.out.println("You choose to join the Death Eaters and unleash a spell to attack your former classmates.");
                 Game.waitForInput();
@@ -286,6 +300,19 @@ public class Level {
         Game.waitForInput();
         System.out.println("\"Jim!!!\" You wail, while using a spell to hit Voldemort.");
         Game.waitForInput();
+        if (Objects.equals(Game.wizard.getWand().getCore(), "PHOENIX_FEATHER")){
+            System.out.println("Your wand lights up, and the wand in Voldemort's hand lights up as well.");
+            Game.waitForInput();
+            System.out.println("You know it's a resonance between the same kind of staff wick, which can lead to unpredictable things happening.");
+            Game.waitForInput();
+            System.out.println("Just see the wand in Voldemort's hand flew out a light and the light of the wand in your hand merged into one, and all of a sudden, you feel a warm power filled your whole body.");
+            Game.wizard.setAttack(Game.wizard.getAttack()+20);
+            Game.waitForInput();
+            System.out.println("Your attack +20");
+            Game.waitForInput();
+            System.out.println("You continue to recite the incantation and attack Voldemort.");
+            Game.waitForInput();
+        }
         System.out.println("In that moment, you decided that even if you put everything you had into it, you would take revenge on Voldemort and bring it all to an end.");
         Game.waitForInput();
         Game.combatBoss(Boss.voldemort);

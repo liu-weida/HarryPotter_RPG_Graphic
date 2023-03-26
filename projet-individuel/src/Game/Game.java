@@ -34,6 +34,30 @@ public class Game {
 
     }
 
+    public int[] initializationProperty() {
+        int[] property = new int[7];
+        Random random = new Random();
+        int level = 100;
+        int HP = 10000;
+        int gold = 1000;
+        int sum = 100;
+        int pharmacy = random.nextInt(21) + 20;
+        sum -= pharmacy;
+        int attack = random.nextInt(21) + 10;
+        sum -= attack;
+        int defense = random.nextInt(21) + 20;
+        sum -= defense;
+        int precise = sum;
+        property[0] = level;
+        property[1] = HP;
+        property[2] = pharmacy;
+        property[3] = attack;
+        property[4] = defense;
+        property[5] = precise;
+        property[6] = gold;
+        return property;
+    }
+
     public void createPlayers() {//创建角色，分配学院和法杖（杖芯和尺寸）
         System.out.println("Welcome to Hogwarts, dear new student. What's your name?");
         String name = scanner.nextLine();
@@ -57,22 +81,40 @@ public class Game {
         System.out.println("Next, choose your wand.");
         Wand.getWand();
         int intWand = scanner.nextInt();
+        boolean isValidWand = (intWand == 1) || (intWand == 2) || (intWand == 3)|| (intWand == 4);
+        while (!isValidWand) {
+            System.out.println("Wrong input, please reselect your wand.");
+            Wand.getWand();
+            intWand = scanner.nextInt();
+            isValidWand = (intWand == 1) || (intWand == 2) || (intWand == 3)|| (intWand == 4);
+        }
         Wand wand = Wand.chooseWand(intWand);
         System.out.println("Your wand is: " + wand );
         waitForInput();
         System.out.println("Next, choose your pet.");
-        int i = 1;
-        for (Pet pet : Pet.values()) {
-            System.out.println(i + "." + pet);
-            i++;
-        }
+        printPets();
         int intPet = scanner.nextInt();
+        boolean isValidPet = (intPet == 1) || (intPet == 2) || (intPet == 3)|| (intPet == 4);
+        while (!isValidPet){
+            System.out.println("Wrong input, please reselect your pet.");
+            printPets();
+            intPet = scanner.nextInt();
+            isValidPet = (intPet == 1) || (intPet == 2) || (intPet == 3)|| (intPet == 4);
+        }
         Pet pet = Pet.choosePet(intPet);
         System.out.println("Your pet is: " + pet);
         wizard.setHouse(house);
         wizard.setWand(wand);
         wizard.setPet(pet);
         waitForInput();
+    }
+
+    private void printPets() {
+        int i = 1;
+        for (Pet pet : Pet.values()) {
+            System.out.println(i + "." + pet);
+            i++;
+        }
     }
 
     public void Properties() {
@@ -89,6 +131,7 @@ public class Game {
         System.out.println("level: " + wizard.getLevel() + "\nHP: " + wizard.getHP() + "\npharmacy: " +wizard.getPharmacy() +
                 "\nattack: " + wizard.getAttack() + "\ndefense: " + wizard.getDefense() + "\nprecise: " + wizard.getPrecise() + "\ngold: " + wizard.getGold());
     }
+
         public void currentProperties() {
         System.out.println("House: "+ wizard.getHouse()+"\nWand: "+wizard.getWand()+"\nPet: "+wizard.getPet());
         System.out.println("level: " + wizard.getLevel() + "\nHP: " + property[1] + "\npharmacy: " +wizard.getPharmacy() +
@@ -128,34 +171,19 @@ public class Game {
         }
 
 
-    public int[] initializationProperty() {
-        int[] property = new int[7];
-        Random random = new Random();
-        int level = 100;
-        int HP = 10000;
-        int gold = 0;
-        int sum = 100;
-        int pharmacy = random.nextInt(21) + 20; // 3-7
-        sum -= pharmacy;
-        int attack = random.nextInt(21) + 10; // 3-7
-        sum -= attack;
-        int defense = random.nextInt(21) + 20; // 3-7
-        sum -= defense;
-        int precise = sum;
-        property[0] = level;
-        property[1] = HP;
-        property[2] = pharmacy;
-        property[3] = attack;
-        property[4] = defense;
-        property[5] = precise;
-        property[6] = gold;
-        return property;
-    }
+
 
     public void arrivalHouse() { //到达学院，可以购买药剂和学习魔法
         System.out.println("Welcome to House, how can I help you?");
         System.out.println("1. Learn new spell.\n"+ "2. Learn new forbidden spell.\n" + "3. Buy potions.\n"+"4. Access to Boot Camp.\n"+"5. Start the adventure.\n"+"6. View own properties");
         int choose = scanner.nextInt();
+        boolean isValidChoose = (choose == 1)||(choose == 2)||(choose == 3)||(choose == 4)||(choose == 5)||(choose == 6);
+        while (!isValidChoose){
+            System.out.println("Wrong input, please reselect.");
+            System.out.println("1. Learn new spell.\n"+ "2. Learn new forbidden spell.\n" + "3. Buy potions.\n"+"4. Access to Boot Camp.\n"+"5. Start the adventure.\n"+"6. View own properties");
+            choose = scanner.nextInt();
+            isValidChoose = (choose == 1)||(choose == 2)||(choose == 3)||(choose == 4)||(choose == 5)||(choose == 6);
+        }
         switch (choose){
             case 1:
                 learnSpell();
@@ -181,50 +209,61 @@ public class Game {
 
 
 
-        public void adventure(){//用来控制进入的关卡
-            if (spells.isEmpty()){
+        public void adventure() {//用来控制进入的关卡
+            if (spells.isEmpty()) {
                 System.out.println("You have not mastered the spell, so it is not safe to start the adventure, go and learn it!");
                 waitForInput();
                 arrivalHouse();
+            } else {
+                switch (adventurelevel) {
+                    case 1:
+                        Level.adventure1st();
+                        break;
+                    case 2:
+                        Level.adventure2nd();
+                        break;
+                    case 3:
+                        Level.adventure3nd();
+                        break;
+                    case 4:
+                        Level.adventure4th();
+                        break;
+                    case 5:
+                        Level.adventure5th();
+                        break;
+                    case 6:
+                        Level.adventure6th();
+                        break;
+                    case 7:
+                        Level.adventure7th();
+                        break;
+                }
+                adventurelevel += 1;
             }
-        switch (adventurelevel){
-            case 1:
-                Level.adventure1st();
-                break;
-            case 2:
-                Level.adventure2nd();
-                break;
-            case 3:
-                Level.adventure3nd();
-                break;
-            case 4:
-                Level.adventure4th();
-                break;
-            case 5:
-                Level.adventure5th();
-                break;
-            case 6:
-                Level.adventure6th();
-                break;
-            case 7:
-                Level.adventure7th();
-                break;
         }
-        adventurelevel += 1;
-    }
 
     public void learnSpell() {
         System.out.println("Welcome to the magic class, what magic do you want to learn?");
         Spell.getSpell();
         int choose = scanner.nextInt();
+        boolean isValidChoose = (choose == 1)||(choose == 2)||(choose == 3)||(choose == 4)||(choose == 5)||(choose == 6)||(choose == 7);
+        while (!isValidChoose){
+            System.out.println("Wrong input, please reselect.");
+            Spell.getSpell();
+            choose = scanner.nextInt();
+            isValidChoose = (choose == 1)||(choose == 2)||(choose == 3)||(choose == 4)||(choose == 5)||(choose == 6)||(choose == 7);
+        }
         if ((choose == 1 && wizard.getLevel()<2)||
-                (choose == 2 && wizard.getLevel()<3)||
-                (choose == 3 && wizard.getLevel()<4)||
-                (choose == 4 && wizard.getLevel()<5)||
-                (choose == 5 && wizard.getLevel()<6)||
-                (choose == 6 && wizard.getLevel()<7)||
-                (choose == 7 && wizard.getLevel()<8))
-                {System.out.println("Your level is not enough oh, please go to the adventure and then come back.");}
+                (choose == 2 && wizard.getLevel()<4)||
+                (choose == 3 && wizard.getLevel()<6)||
+                (choose == 4 && wizard.getLevel()<8)||
+                (choose == 5 && wizard.getLevel()<10)||
+                (choose == 6 && wizard.getLevel()<12)||
+                (choose == 7 && wizard.getLevel()<14))
+                {System.out.println("Your level is not enough oh, please go to the adventure and then come back.");
+                waitForInput();
+                arrivalHouse();
+                }
         Spell spell = Spell.chooseSpell(choose);
         if (spells.contains(spell)){
             System.out.println("You have mastered this spell, please reselect.");
@@ -244,10 +283,20 @@ public class Game {
         System.out.println("Welcome to the Forbidden Magic Class, what magic do you want to learn?");
         ForbiddenSpell.getForbiddenSpell();
         int choose = scanner.nextInt();
-        if ((choose == 1 && wizard.getLevel()<8)||
-                (choose == 2 && wizard.getLevel()<9)||
-                (choose == 3 && wizard.getLevel()<10))
-        {System.out.println("Your level is not enough oh, please go to the adventure and then come back.");}
+        boolean isValidChoose = (choose == 1)||(choose == 2)||(choose == 3);
+        while (!isValidChoose){
+            System.out.println("Wrong input, please reselect.");
+            ForbiddenSpell.getForbiddenSpell();
+            choose = scanner.nextInt();
+            isValidChoose = (choose == 1)||(choose == 2)||(choose == 3);
+        }
+        if ((choose == 1 && wizard.getLevel()<10)||
+                (choose == 2 && wizard.getLevel()<12)||
+                (choose == 3 && wizard.getLevel()<14))
+        {System.out.println("Your level is not enough oh, please go to the adventure and then come back.");
+        waitForInput();
+        arrivalHouse();
+        }
         ForbiddenSpell forbiddenSpell = ForbiddenSpell.chooseForbiddenSpell(choose);
         if (forbiddenSpells.contains(forbiddenSpell)){
             System.out.println("You have mastered this spell, please reselect.");
@@ -266,31 +315,42 @@ public class Game {
         System.out.println("Welcome to the Potion House, what potion do you want to buy?");
         Potion.getPotion();
         int choose = scanner.nextInt();
-        if ((choose == 1 && wizard.getGold()<20)||
-                (choose == 1 && wizard.getGold()<40)||
-                (choose == 1 && wizard.getGold()<60)||
-                (choose == 1 && wizard.getGold()<100))
-        {System.out.println("You don't have enough coins, so come back after you get enough coins.");}
-        else if(choose == 1) {
+        boolean isValidChoose = (choose == 1)||(choose == 2)||(choose == 3)||(choose == 4);
+        while (!isValidChoose){
+            System.out.println("Wrong input, please reselect.");
+            Potion.getPotion();
+            choose = scanner.nextInt();
+            isValidChoose = (choose == 1)||(choose == 2)||(choose == 3)||(choose == 4);
+        }
+        if ((choose == 1 && wizard.getGold()<10)||
+                (choose == 2 && wizard.getGold()<20)||
+                (choose == 3 && wizard.getGold()<40)||
+                (choose == 4 && wizard.getGold()<80))
+        {System.out.println("You don't have enough coins, so come back after you get enough coins.");
+            waitForInput();
+            arrivalHouse();
+        }else if(choose == 1) {
             int gold =  wizard.getGold();
-            gold = gold - 20;
+            gold = gold - 10;
+            wizard.setGold(gold);
         }else if(choose == 2) {
             int gold =  wizard.getGold();
-            gold = gold - 40;
+            gold = gold - 20;
+            wizard.setGold(gold);
         }else if(choose == 3) {
             int gold =  wizard.getGold();
-            gold = gold - 60;
+            gold = gold - 40;
+            wizard.setGold(gold);
         }else if(choose == 4) {
             int gold =  wizard.getGold();
-            gold = gold - 100;
-        }
+            gold = gold - 80;
+            wizard.setGold(gold);}
         Potion potion = Potion.choosePotion(choose);
         System.out.println(potion);
         potions.add(potion);
         wizard.setPotions(potions);
-        System.out.println("You have purchased: "+potion+" ×1");
-        //List<Potion> potions = wizard.getPotions();
-    }
+        System.out.println("You have purchased: "+potion+" ×1");}
+
     public static void combat(Enemy enemy){
         enemy.resetHP();
         System.out.println("Enemy "+enemy.getName()+" has appeared!");
@@ -299,6 +359,13 @@ public class Game {
 
             System.out.println("Please choose your action: \n1. use spell. \n2. use potion. \n3. use forbidden spell.\n4. Conduct defense.");
             int choose = scanner.nextInt();
+            boolean isValidChoose = (choose == 1)||(choose == 2)||(choose == 3)||(choose == 4);
+            while (!isValidChoose){
+                System.out.println("Wrong input, please reselect.");
+                System.out.println("Please choose your action: \n1. use spell. \n2. use potion. \n3. use forbidden spell.\n4. Conduct defense.");
+                choose = scanner.nextInt();
+                isValidChoose = (choose == 1)||(choose == 2)||(choose == 3)||(choose == 4);
+            }
             if (choose == 1){
                 useSpells(enemy);
             } else if (choose == 2) {
@@ -320,22 +387,34 @@ public class Game {
         for (int i = 0; i < spells.size(); i++) {
             System.out.println((i + 1) + "." + spells.get(i));
         }
-        int chooseSpell = scanner.nextInt();
-        wizard.attack(wizard, enemy, spells.get(chooseSpell-1));
-        if (enemy.getHP()<=0){
-            System.out.println(enemy.getName()+" is dead, you have won!!!");
-            int gold = wizard.getGold()+enemy.getGold();
-            wizard.setGold(gold);
-            System.out.println("You now have "+wizard.getGold()+" gold!");
-            battleVictory();
-        } else {
-            enemy.attack(wizard, enemy, spells.get(0));
-            System.out.println("You have "+property[1]+" HP points left.");
+        int chooseSpell;
+        boolean isValidChoose = false;
+        while (!isValidChoose){
+            chooseSpell = scanner.nextInt();
+            if (chooseSpell < 1 || chooseSpell > spells.size()) {
+                System.out.println("Invalid input, please select a number between 1 and " + spells.size() + ".");
+            } else if (chooseSpell > 1 && wizard.getKnownSpells().size() < 2) {
+                System.out.println("You only know one spell, please select the first one.");
+            } else {
+                isValidChoose = true;
+                wizard.attack(wizard, enemy, spells.get(chooseSpell-1));
+                if (enemy.getHP()<=0){
+                    System.out.println(enemy.getName()+" is dead, you have won!!!");
+                    int gold = wizard.getGold()+enemy.getGold();
+                    wizard.setGold(gold);
+                    System.out.println("You now have "+wizard.getGold()+" gold!");
+                    battleVictory();
+                } else {
+                    enemy.attack(wizard, enemy, spells.get(0));
+                    System.out.println("You have "+property[1]+" HP points left.");
+                }
+            }
         }
     }
+
     public static void usePotion(Enemy enemy) {
         if (potions.isEmpty()) {
-            System.out.println("You do not have potions oh, quickly use the spell to defeat the enemy.");
+            System.out.println("You do not have any potions, use spells to defeat the enemy.");
             waitForInput();
             useSpells(enemy);
         } else {
@@ -344,40 +423,58 @@ public class Game {
             for (int i = 0; i < potions.size(); i++) {
                 System.out.println((i + 1) + "." + potions.get(i));
             }
-            int choosePotion = scanner.nextInt();
-            wizard.usePotion(wizard, potions.get(choosePotion - 1));
-            potions.remove(choosePotion - 1);
+            int choosePotion;
+            boolean isValidChoose = false;
+            while (!isValidChoose){
+                choosePotion = scanner.nextInt();
+                if (choosePotion < 1 || choosePotion > potions.size()) {
+                    System.out.println("Invalid input, please select a number between 1 and " + potions.size() + ".");
+                } else {
+                    isValidChoose = true;
+                    wizard.usePotion(wizard, potions.get(choosePotion - 1));
+                    potions.remove(choosePotion - 1);
+                }
+            }
         }
     }
+
     public static void useForbiddenSpell(Enemy enemy) {
         if (forbiddenSpells.isEmpty()) {
             System.out.println("You haven't mastered the forbidden spell yet, so use the other spells first.");
             waitForInput();
             useSpells(enemy);
         } else {
-
             System.out.println("Please select the forbidden spell you want to use:");
             List<ForbiddenSpell> forbiddenSpells = wizard.getKnownForbiddenSpells();
-
             for (int i = 0; i < forbiddenSpells.size(); i++) {
                 System.out.println((i + 1) + "." + forbiddenSpells.get(i));
             }
-            int chooseSpell = scanner.nextInt();
-            wizard.forbiddenAttack(wizard, enemy, forbiddenSpells.get(chooseSpell - 1));
-            if (enemy.getHP() <= 0) {
-                System.out.println(enemy.getName() + " is dead, you have won!!!");
-                int level = wizard.getLevel() + 1;
-                wizard.setLevel(level);
-                int gold = wizard.getGold() + enemy.getGold();
-                wizard.setGold(gold);
-                System.out.println("You now have " + wizard.getGold() + " gold!");
-                battleVictory();
-            } else {
-                enemy.attack(wizard, enemy, spells.get(0));
-                System.out.println("You have " + wizard.getHP() + " HP points left.");
+            int chooseSpell;
+            boolean isValidChoose = false;
+            while (!isValidChoose){
+                chooseSpell = scanner.nextInt();
+                if (chooseSpell < 1 || chooseSpell > forbiddenSpells.size()) {
+                    System.out.println("Invalid input, please select a number between 1 and " + forbiddenSpells.size() + ".");
+                } else {
+                    isValidChoose = true;
+                    wizard.forbiddenAttack(wizard, enemy, forbiddenSpells.get(chooseSpell - 1));
+                    if (enemy.getHP() <= 0) {
+                        System.out.println(enemy.getName() + " is dead, you have won!!!");
+                        int level = wizard.getLevel() + 1;
+                        wizard.setLevel(level);
+                        int gold = wizard.getGold() + enemy.getGold();
+                        wizard.setGold(gold);
+                        System.out.println("You now have " + wizard.getGold() + " gold!");
+                        battleVictory();
+                    } else {
+                        enemy.attack(wizard, enemy, spells.get(0));
+                        System.out.println("You have " + property[1] + " HP points left.");
+                    }
+                }
             }
         }
     }
+
 
     public static void defense(Enemy enemy){
         Wizard.defend(enemy);
@@ -389,6 +486,13 @@ public class Game {
         while (enemy.getHP()>0) {
             System.out.println("Please choose your action: \n1. use spell. \n2. use potion. \n3. use forbidden spell.\n4. Conduct defense.");
             int choose = scanner.nextInt();
+            boolean isValidChoose = (choose == 1)||(choose == 2)||(choose == 3)||(choose == 4);
+            while (!isValidChoose){
+                System.out.println("Wrong input, please reselect.");
+                System.out.println("Please choose your action: \n1. use spell. \n2. use potion. \n3. use forbidden spell.\n4. Conduct defense.");
+                choose = scanner.nextInt();
+                isValidChoose = (choose == 1)||(choose == 2)||(choose == 3)||(choose == 4);
+            }
             if (choose == 1){
                 useSpellsBoss(enemy);
             } else if (choose == 2) {
@@ -409,65 +513,94 @@ public class Game {
         for (int i = 0; i < spells.size(); i++) {
             System.out.println((i + 1) + "." + spells.get(i));
         }
-        int chooseSpell = scanner.nextInt();
-        wizard.attack(wizard,enemy, spells.get(chooseSpell-1));
-        if (enemy.getHP()<=0){
-            System.out.println(enemy.getName()+" is dead, you have won!!!");
-            int level = wizard.getLevel()+1;
-            wizard.setLevel(level);
-            int gold = wizard.getGold()+enemy.getGold();
-            wizard.setGold(gold);
-            System.out.println("You now have "+wizard.getGold()+" gold!");
-            battleVictory();
-        } else {
-            enemy.attack(wizard, enemy, spells.get(0));
-            System.out.println("You have "+wizard.getHP()+" HP points left.");
+        int chooseSpell;
+        boolean isValidChoose = false;
+        while (!isValidChoose){
+            chooseSpell = scanner.nextInt();
+            if (chooseSpell < 1 || chooseSpell > spells.size()) {
+                System.out.println("Invalid input, please select a number between 1 and " + spells.size() + ".");
+            } else {
+                isValidChoose = true;
+                wizard.attack(wizard,enemy, spells.get(chooseSpell-1));
+                if (enemy.getHP()<=0){
+                    System.out.println(enemy.getName()+" is dead, you have won!!!");
+                    int level = wizard.getLevel()+1;
+                    wizard.setLevel(level);
+                    int gold = wizard.getGold()+enemy.getGold();
+                    wizard.setGold(gold);
+                    System.out.println("You now have "+wizard.getGold()+" gold!");
+                    battleVictory();
+                } else {
+                    enemy.attack(wizard, enemy, spells.get(0));
+                    System.out.println("You have "+property[1]+" HP points left.");
+                }
+            }
         }
     }
+
     public static void usePotionBoss(Boss enemy){
         if (potions.isEmpty()){
-            System.out.println("You do not have potions oh, quickly use the spell to defeat the enemy.");
+            System.out.println("You do not have any potions, use spells to defeat the enemy.");
             waitForInput();
             useSpellsBoss(enemy);
-        }else{
-        System.out.println("Please select the potion you want to use:");
-        List<Potion> potions = wizard.getPotions();
-        for (int i = 0; i < potions.size(); i++) {
-            System.out.println((i + 1) + "." + potions.get(i));
+        } else {
+            System.out.println("Please select the potion you want to use:");
+            List<Potion> potions = wizard.getPotions();
+            for (int i = 0; i < potions.size(); i++) {
+                System.out.println((i + 1) + "." + potions.get(i));
+            }
+            int choosePotion;
+            boolean isValidChoose = false;
+            while (!isValidChoose){
+                choosePotion = scanner.nextInt();
+                if (choosePotion < 1 || choosePotion > potions.size()) {
+                    System.out.println("Invalid input, please select a number between 1 and " + potions.size() + ".");
+                } else {
+                    isValidChoose = true;
+                    wizard.usePotion(wizard, potions.get(choosePotion - 1));
+                    potions.remove(choosePotion - 1);
+                }
+            }
         }
-        int choosePotion = scanner.nextInt();
-        wizard.usePotion(wizard,potions.get(choosePotion-1));
-        potions.remove(choosePotion-1);
     }
-    }
+
     public static void useForbiddenSpellBoss(Boss enemy){
         if (forbiddenSpells.isEmpty()){
             System.out.println("You haven't mastered the forbidden spell yet, so use the other spells first.");
             waitForInput();
             combatBoss(enemy);
-        }else {
+        } else {
             System.out.println("Please select the forbidden spell you want to use:");
             List<ForbiddenSpell> forbiddenSpells = wizard.getKnownForbiddenSpells();
-
             for (int i = 0; i < forbiddenSpells.size(); i++) {
                 System.out.println((i + 1) + "." + forbiddenSpells.get(i));
             }
-            int chooseSpell = scanner.nextInt();
-            wizard.forbiddenAttack(wizard, enemy, forbiddenSpells.get(chooseSpell - 1));
-            if (enemy.getHP() <= 0) {
-                System.out.println(enemy.getName() + " is dead, you have won!!!");
-                int level = wizard.getLevel() + 1;
-                wizard.setLevel(level);
-                int gold = wizard.getGold() + enemy.getGold();
-                wizard.setGold(gold);
-                System.out.println("You now have " + wizard.getGold() + " gold!");
-                battleVictory();
-            } else {
-                enemy.attack(wizard, enemy, spells.get(0));
-                System.out.println("You have " + wizard.getHP() + " HP points left.");
+            int chooseSpell;
+            boolean isValidChoose = false;
+            while (!isValidChoose){
+                chooseSpell = scanner.nextInt();
+                if (chooseSpell < 1 || chooseSpell > forbiddenSpells.size()) {
+                    System.out.println("Invalid input, please select a number between 1 and " + forbiddenSpells.size() + ".");
+                } else {
+                    isValidChoose = true;
+                    wizard.forbiddenAttack(wizard, enemy, forbiddenSpells.get(chooseSpell - 1));
+                    if (enemy.getHP() <= 0) {
+                        System.out.println(enemy.getName() + " is dead, you have won!!!");
+                        int level = wizard.getLevel() + 1;
+                        wizard.setLevel(level);
+                        int gold = wizard.getGold() + enemy.getGold();
+                        wizard.setGold(gold);
+                        System.out.println("You now have " + wizard.getGold() + " gold!");
+                        battleVictory();
+                    } else {
+                        enemy.attack(wizard, enemy, spells.get(0));
+                        System.out.println("You have " + property[1] + " HP points left.");
+                    }
+                }
             }
         }
     }
+
     public static void defense(Boss enemy){
         Wizard.defend(enemy);
     }
@@ -478,6 +611,13 @@ public class Game {
         System.out.println("Please select the attributes to be enhanced:");
         System.out.println("1. HP +100 \n2. Pharmacy +2 \n3. Attack +2 \n4. Defense +2 \n5. Precise +2");
         int chosebonu = scanner.nextInt();
+        boolean isValidChosebonu = (chosebonu == 1)||(chosebonu == 2)||(chosebonu == 3)||(chosebonu == 4)||(chosebonu == 5);
+        while (!isValidChosebonu){
+            System.out.println("Wrong input, please reselect.");
+            System.out.println("1. HP +100 \n2. Pharmacy +2 \n3. Attack +2 \n4. Defense +2 \n5. Precise +2");
+            chosebonu = scanner.nextInt();
+            isValidChosebonu = (chosebonu == 1)||(chosebonu == 2)||(chosebonu == 3)||(chosebonu == 4)||(chosebonu == 5);
+        }
         switch (chosebonu){
             case 1:
                 property[1] += 100;
@@ -509,9 +649,9 @@ public class Game {
         System.out.println("The battle is over and you return to the House.");
     }
         public static void waitForInput() {
-//            Scanner scanner = new Scanner(System.in);
-//            System.out.print("\u25BC");
-//            scanner.nextLine();
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("\u25BC");
+            scanner.nextLine();
         }
     }
 

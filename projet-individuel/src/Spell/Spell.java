@@ -15,13 +15,13 @@ public class Spell extends AbstractSpell {
     public static final Spell deprimo = new Spell("Deprimo", 70, 0.6f);//房塌地陷
     public static final Spell expulso = new Spell("Expulso", 90, 0.55f);//房塌地陷
     public static void getSpell(){
-        System.out.println("1."+reducto);
-        System.out.println("2."+confringo);
-        System.out.println("3."+locomotorMortis);
-        System.out.println("4."+diffindo);
-        System.out.println("5."+incendio);
-        System.out.println("6."+deprimo);
-        System.out.println("7."+expulso);
+        System.out.println("1."+reducto+"            Need lv.1");
+        System.out.println("2."+confringo+"          Need lv.3");
+        System.out.println("3."+locomotorMortis+"   Need lv.5");
+        System.out.println("4."+diffindo+"           Need lv.7");
+        System.out.println("5."+incendio+"           Need lv.9");
+        System.out.println("6."+deprimo+"            Need lv.11");
+        System.out.println("7."+expulso+"            Need lv.13");
     }
     public static Spell chooseSpell(int spell) {
         switch (spell) {
