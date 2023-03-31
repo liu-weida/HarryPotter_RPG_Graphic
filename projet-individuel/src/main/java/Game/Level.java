@@ -108,7 +108,7 @@ public class Level {
         Game.waitForInput();
     }
 
-    public static void adventure3nd(){
+    public static void adventure3rd(){
         System.out.println("Level 3: The Prisonner of Azkaban");
         System.out.println("In recent times, many Dementors have inexplicably appeared near Hogwarts, roaming the streets and wandering the countryside ...... wilfully harming others. One of your classmates was hurt by a Dementor, so you decided to learn the legendary Patronus spell to expel these Dementors.");
         Game.waitForInput();

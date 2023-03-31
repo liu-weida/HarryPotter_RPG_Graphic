@@ -45,13 +45,6 @@ public class Spell extends AbstractSpell {
 
     }
 
-//    public int getDamage(){
-//        return damage;
-//    }
-//
-//    public float getPrecise(){
-//        return precise;
-//    }
 
     public String toString() {
         return name;

@@ -14,10 +14,10 @@ public class Wand { //魔杖
         this.core = core;
         this.size = size;
         this.wood = wood;
-        this.pharmacyBonus = pharmacyBonus;
-        this.attackBonus = attackBonus;
-        this.defenseBonus = defenseBonus;
-        this.preciseBonus = preciseBonus;
+        Wand.pharmacyBonus = pharmacyBonus;
+        Wand.attackBonus = attackBonus;
+        Wand.defenseBonus = defenseBonus;
+        Wand.preciseBonus = preciseBonus;
     }
 
     private static final Wand Holly_PHOENIX_FEATHER = new Wand(Core.PHOENIX_FEATHER, 11, "Holly", 0, 5, 5, 0);//冬青木+凤羽，防御+攻击

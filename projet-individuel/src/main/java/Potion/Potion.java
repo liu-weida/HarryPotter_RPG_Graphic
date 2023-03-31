@@ -1,6 +1,9 @@
 package Potion;
 
-
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 public class Potion { //药水
     private String name;
     private int addHP;
@@ -16,21 +19,6 @@ public class Potion { //药水
     private static final Potion bloodrReplenishing = new Potion("Blood Replenishing", 60);//补血药
     private static final Potion skeleGro = new Potion("Skele Gro", 100);//生骨灵
 
-    public int getAddHP() {
-        return addHP;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAddHP(int addHP) {
-        this.addHP = addHP;
-    }
 
     public static void getPotion() {
         System.out.println("1." + invigorationDraught+"       Need 10 gold");

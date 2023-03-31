@@ -270,7 +270,7 @@ public class Game {
                         Level.adventure2nd();
                         break;
                     case 3:
-                        Level.adventure3nd();
+                        Level.adventure3rd();
                         break;
                     case 4:
                         Level.adventure4th();

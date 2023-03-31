@@ -14,10 +14,10 @@ public class House { //学院
 
     public House(String name, int pharmacyBonus, int attackBonus, int defenseBonus, int preciseBonus) {
         this.name = name;
-        this.pharmacyBonus = pharmacyBonus;
-        this.attackBonus = attackBonus;
-        this.defenseBonus = defenseBonus;
-        this.preciseBonus = preciseBonus;
+        House.pharmacyBonus = pharmacyBonus;
+        House.attackBonus = attackBonus;
+        House.defenseBonus = defenseBonus;
+        House.preciseBonus = preciseBonus;
     }
 
     public static final House Hufflepuff = new House("Hufflepuff", 20, 0, 0, 0);
@@ -25,9 +25,7 @@ public class House { //学院
     public static final House Gryffindor = new House("Gryffindor", 0, 0, 10, 0);
     public static final House Ravenclaw = new House("Ravenclaw", 0, 0, 0, 10);
 
-//    public String getName() {
-//        return name;
-//    }
+
     public int getPharmacyBonus() {
         return pharmacyBonus;
     }
