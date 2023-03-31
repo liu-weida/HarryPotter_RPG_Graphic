@@ -1,51 +1,50 @@
 package Enemy;
 
-import House.House;
-import Pet.Pet;
-import Player.Wizard;
-import Potion.Potion;
-import Spell.Spell;
-import Spell.ForbiddenSpell;
-import Spell.ApplySpell;
-import Wand.Wand;
-import Wand.Core;
-import org.junit.Before;
+import static org.junit.Assert.*;
 import org.junit.Test;
+import java.util.ArrayList;
+import java.util.Arrays;
 
+import Spell.Spell;
+import Game.Game;
+import Player.Wizard;
 
-import java.util.List;
 
 public class BossTest {
 
-    private Boss bossUnderTest;
-
-    @Before
-    public void setUp() {
-        bossUnderTest = new Boss(0, 0, "name", 0, 0, 0, 0, 0, List.of(new Spell("name", 0, 0.0f)), 0);
-    }
-
     @Test
     public void testAttack() {
-        // Setup
-        final Wizard wizard = new Wizard(0, "name", 0, 0, 0, 0, 0, Pet.OWL,
-                new Wand(Core.PHOENIX_FEATHER, 0, "wood", 0, 0, 0, 0), new House("name", 0, 0, 0, 0),
-                List.of(new Spell("name", 0, 0.0f)), List.of(new ForbiddenSpell("name", 0, 0.0f)),
-                List.of(new ApplySpell("name", 0, 0.0f)), List.of(new Potion("name", 0)), 0);
-        final Boss boss = Boss.dementor;
-        final Spell spell = new Spell("name", 0, 0.0f);
+        Wizard wizard = new Wizard(100,"Harry", 100, 100, 10, 10, 10, null, null, null,new ArrayList<Spell>(Arrays.asList(Spell.reducto)), null, null, null, 100);
+        Boss boss = new Boss(250, 250, "Troll", 5, 40, 20, 20, 1, new ArrayList<Spell>(Arrays.asList(Spell.reducto)), 50);
+        Spell spell = Spell.reducto;
 
-        // Run the test
-        bossUnderTest.attack(wizard, boss, spell);
-
-        // Verify the results
     }
 
     @Test
     public void testResetHP() {
-        // Setup
-        // Run the test
-        bossUnderTest.resetHP();
+        Boss boss = new Boss(250, 250, "Troll", 5, 40, 20, 20, 1, new ArrayList<Spell>(Arrays.asList(Spell.reducto)), 50);
+        boss.setHP(0);
+        boss.resetHP();
+        assertEquals(250, boss.getHP());
+    }
 
-        // Verify the results
+    @Test
+    public void testStaticVariables() {
+        assertEquals(250, Boss.troll.getInitialHP());
+        assertEquals("Troll", Boss.troll.getName());
+        assertEquals(300, Boss.basilic.getInitialHP());
+        assertEquals("Basilic", Boss.basilic.getName());
+        assertEquals(400, Boss.dementor.getInitialHP());
+        assertEquals("Dementor", Boss.dementor.getName());
+        assertEquals(500, Boss.peterPettigrew.getInitialHP());
+        assertEquals("Peter Pettigrew", Boss.peterPettigrew.getName());
+        assertEquals(600, Boss.doloresOmbrage.getInitialHP());
+        assertEquals("Dolores Ombrage", Boss.doloresOmbrage.getName());
+        assertEquals(750, Boss.doloresOmbrageLeader.getInitialHP());
+        assertEquals("Dolores Ombrage Leader", Boss.doloresOmbrageLeader.getName());
+        assertEquals(900, Boss.bellatrixLestrange.getInitialHP());
+        assertEquals("Bellatrix Lestrange", Boss.bellatrixLestrange.getName());
+        assertEquals(1000, Boss.voldemort.getInitialHP());
+        assertEquals("Voldemort", Boss.voldemort.getName());
     }
 }

@@ -5,6 +5,10 @@ import Spell.Spell;
 
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 public abstract class AbstractEnemy extends Character {
     private List<Spell> knownSpells;
     public final int initialHP;

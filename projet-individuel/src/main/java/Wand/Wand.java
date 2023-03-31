@@ -1,5 +1,9 @@
 package Wand;
 
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 
 public class Wand { //魔杖
     private Core core;
@@ -21,7 +25,7 @@ public class Wand { //魔杖
     }
 
     private static final Wand Holly_PHOENIX_FEATHER = new Wand(Core.PHOENIX_FEATHER, 11, "Holly", 0, 5, 5, 0);//冬青木+凤羽，防御+攻击
-    private static final Wand Holly_DRAGON_HEARTSTRING = new Wand(Core.DRAGON_HEARTSTRING, 10, "Holly", 0, 5, 0, 5);//冬青木+龙心弦，防御+精准
+    public static final Wand Holly_DRAGON_HEARTSTRING = new Wand(Core.DRAGON_HEARTSTRING, 10, "Holly", 0, 5, 0, 5);//冬青木+龙心弦，防御+精准
     private static final Wand Redwood_PHOENIX_FEATHER = new Wand(Core.PHOENIX_FEATHER, 11, "Redwood", 10, 1, 5, 0);//红杉木+凤羽，药水增益+攻击
     private static final Wand Redwood_DRAGON_HEARTSTRING = new Wand(Core.DRAGON_HEARTSTRING, 10, "Redwood", 0, 0, 5, 10);//红杉木+龙心弦，药水增益+精准
 

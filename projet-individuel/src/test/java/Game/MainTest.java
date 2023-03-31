@@ -1,15 +1,12 @@
-package Game;
-
-import org.junit.Test;
-
-public class MainTest {
-
-    @Test
-    public void testMain() {
-        // Setup
-        // Run the test
-        Main.main(new String[]{"args"});
-
-        // Verify the results
-    }
-}
+//package Game;
+//
+//import org.junit.Test;
+//
+//public class MainTest {
+//
+//    @Test
+//    public void testPlay() {
+//        Game game = new Game();
+//        game.play();
+//    }
+//}

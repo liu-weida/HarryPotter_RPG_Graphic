@@ -12,11 +12,7 @@ import Spell.ApplySpell;
 import Enemy.Enemy;
 import Enemy.Boss;
 
-
 import java.util.*;
-
-
-
 
 public class Game {
     public static int[] property;

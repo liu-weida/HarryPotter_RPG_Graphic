@@ -1,15 +1,23 @@
 package House;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.*;
 
 public class SortingHatTest {
 
     @Test
     public void testGetRandomHome() {
-        // Setup
-        // Run the test
-        final House result = SortingHat.getRandomHome();
-
-        // Verify the results
+        for (int i = 0; i < 100; i++) {
+            House house = SortingHat.getRandomHome();
+            assertNotNull(house);
+            assertTrue(house == House.Hufflepuff ||
+                    house == House.Slytherin ||
+                    house == House.Gryffindor ||
+                    house == House.Ravenclaw);
+        }
     }
+
 }
+

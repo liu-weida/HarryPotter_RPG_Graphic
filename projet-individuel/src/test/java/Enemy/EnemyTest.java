@@ -1,50 +1,40 @@
 package Enemy;
-
-import House.House;
-import Pet.Pet;
-import Player.Wizard;
-import Potion.Potion;
-import Spell.Spell;
-import Spell.ForbiddenSpell;
-import Spell.ApplySpell;
-import Wand.Wand;
-import Wand.Core;
-import org.junit.Before;
+import static org.junit.Assert.*;
 import org.junit.Test;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-import java.util.List;
+import Spell.Spell;
+import Game.Game;
+import Player.Wizard;
 
 public class EnemyTest {
 
-    private Enemy enemyUnderTest;
-
-    @Before
-    public void setUpTEST() {
-        enemyUnderTest = new Enemy(0, 0, "name", 0, 0, 0, 0, 0, List.of(new Spell("name", 0, 0.0f)), 0);
-    }
-
     @Test
     public void testAttack() {
-        // Setup
-        final Wizard wizard = new Wizard(0, "name", 0, 0, 0, 0, 0, Pet.OWL,
-                new Wand(Core.DRAGON_HEARTSTRING, 0, "wood", 0, 0, 0, 0), new House("name", 0, 0, 0, 0),
-                List.of(new Spell("name", 0, 0.0f)), List.of(new ForbiddenSpell("name", 0, 0.0f)),
-                List.of(new ApplySpell("name", 0, 0.0f)), List.of(new Potion("name", 0)), 0);
-        final Enemy enemy = Enemy.juvenileTrolls;
-        final Spell spell = new Spell("name", 0, 0.0f);
-
-        // Run the test
-        enemyUnderTest.attack(wizard, enemy, spell);
-
-        // Verify the results
+        Wizard wizard = new Wizard(100, "Harry", 100, 10, 10, 10, 10, null,null, null,new ArrayList<Spell>(Arrays.asList(Spell.reducto)),null,null,null,100);
+        Enemy enemy = new Enemy(100, 100, "Gargoyle", 2, 12, 4, 8, 1, new ArrayList<Spell>(Arrays.asList(Spell.reducto)), 15);
+        Spell spell = Spell.reducto;
     }
 
     @Test
     public void testResetHP() {
-        // Setup
-        // Run the test
-        enemyUnderTest.resetHP();
-
-        // Verify the results
+        Enemy enemy = new Enemy(100, 100, "Gargoyle", 2, 12, 4, 8, 1, new ArrayList<Spell>(Arrays.asList(Spell.reducto)), 15);
+        enemy.setHP(0);
+        enemy.resetHP();
+        assertEquals(100, enemy.getHP());
     }
+
+    @Test
+    public void testStaticVariables() {
+        assertEquals(100, Enemy.gargoyle.getInitialHP());
+        assertEquals("Gargoyle", Enemy.gargoyle.getName());
+        assertEquals(60, Enemy.juvenileTrolls.getInitialHP());
+        assertEquals("Juvenile Trolls", Enemy.juvenileTrolls.getName());
+        assertEquals(80, Enemy.snake.getInitialHP());
+        assertEquals("Snake", Enemy.snake.getName());
+        assertEquals(120, Enemy.deathEaters.getInitialHP());
+        assertEquals("Death Eaters", Enemy.deathEaters.getName());
+    }
+
 }

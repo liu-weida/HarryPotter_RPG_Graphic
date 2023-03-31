@@ -1,40 +1,49 @@
 package Spell;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ForbiddenSpellTest {
 
-    private ForbiddenSpell forbiddenSpellUnderTest;
+class ForbiddenSpellTest {
 
-    @Before
-    public void setUp() {
-        forbiddenSpellUnderTest = new ForbiddenSpell("name", 0, 0.0f);
+    @Test
+    void testGetName() {
+        ForbiddenSpell forbiddenSpell = ForbiddenSpell.chooseForbiddenSpell(1);
+        assertEquals("Imperio", forbiddenSpell.getName());
     }
 
     @Test
-    public void testToString() {
-        assertEquals("name", forbiddenSpellUnderTest.toString());
+    void testChooseForbiddenSpell() {
+        ForbiddenSpell forbiddenSpell1 = ForbiddenSpell.chooseForbiddenSpell(1);
+        ForbiddenSpell forbiddenSpell2 = ForbiddenSpell.chooseForbiddenSpell(2);
+        ForbiddenSpell forbiddenSpell3 = ForbiddenSpell.chooseForbiddenSpell(3);
+
+        assertEquals("Imperio", forbiddenSpell1.getName());
+        assertEquals(120, forbiddenSpell1.getDamage());
+        assertEquals(0.5f, forbiddenSpell1.getPrecise());
+        assertEquals("Imperio", forbiddenSpell1.toString());
+
+        assertEquals("Crucio", forbiddenSpell2.getName());
+        assertEquals(150, forbiddenSpell2.getDamage());
+        assertEquals(0.45f, forbiddenSpell2.getPrecise());
+        assertEquals("Crucio", forbiddenSpell2.toString());
+
+        assertEquals("Avada Kedavra", forbiddenSpell2.getName());
+        assertEquals(200, forbiddenSpell2.getDamage());
+        assertEquals(0.4f, forbiddenSpell2.getPrecise());
+        assertEquals("Avada Kedavra", forbiddenSpell2.toString());
     }
 
     @Test
-    public void testGetForbiddenSpell() {
-        // Setup
-        // Run the test
+    void testGetForbiddenSpell() {
         ForbiddenSpell.getForbiddenSpell();
-
-        // Verify the results
+        // 根据控制台输出手动验证
     }
 
     @Test
-    public void testChooseForbiddenSpell() {
-        // Run the test
-        final ForbiddenSpell result = ForbiddenSpell.chooseForbiddenSpell(0);
-        assertEquals("name", result.toString());
-        assertEquals("name", result.getName());
-        assertEquals(0, result.getDamage());
-        assertEquals(0.0f, result.getPrecise(), 0.0001);
+    void testToString() {
+        ForbiddenSpell forbiddenSpell = ForbiddenSpell.chooseForbiddenSpell(1);
+        assertEquals("Imperio", forbiddenSpell.toString());
     }
 }

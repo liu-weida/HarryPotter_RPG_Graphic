@@ -26,7 +26,7 @@ public class House { //学院
     public static final House Ravenclaw = new House("Ravenclaw", 0, 0, 0, 10);
 
 
-    public int getPharmacyBonus() {
+    public static int getPharmacyBonus() {
         return pharmacyBonus;
     }
 

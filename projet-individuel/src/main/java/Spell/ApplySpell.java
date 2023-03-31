@@ -6,7 +6,7 @@ public class ApplySpell extends AbstractSpell{
     }
     private static final ApplySpell wingardiumLeviosa = new ApplySpell("Wingardium leviosa", 0, 1f);//漂浮咒
     private static final ApplySpell expectroPatronum = new ApplySpell("Expectro Patronum", 0, 1f);//守护神咒
-    private static final ApplySpell accio = new ApplySpell("Accio", 0, 1f);//摄物咒
+    public static final ApplySpell accio = new ApplySpell("Accio", 0, 1f);//摄物咒
 
     public static ApplySpell chooseApplySpell(int applySpell) {
         switch (applySpell) {

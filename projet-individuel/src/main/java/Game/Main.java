@@ -1,7 +1,5 @@
 package Game;
 
-import Game.Game;
-
 
 public class Main {
 

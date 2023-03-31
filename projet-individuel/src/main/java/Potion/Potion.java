@@ -14,7 +14,7 @@ public class Potion { //药水
         this.addHP = addHP;
     }
 
-    private static final Potion invigorationDraught = new Potion("Invigoration Draught", 20);//活力滋补剂
+    public static final Potion invigorationDraught = new Potion("Invigoration Draught", 20);//活力滋补剂
     private static final Potion bruiseHealing = new Potion("Bruise Bealing", 40);//淤伤治疗剂
     private static final Potion bloodrReplenishing = new Potion("Blood Replenishing", 60);//补血药
     private static final Potion skeleGro = new Potion("Skele Gro", 100);//生骨灵

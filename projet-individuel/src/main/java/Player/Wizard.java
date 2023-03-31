@@ -9,7 +9,6 @@ import Spell.Spell;
 import Spell.ForbiddenSpell;
 import Spell.ApplySpell;
 import Potion.Potion;
-import Enemy.Enemy;
 import java.util.List;
 import java.util.Random;
 
@@ -38,54 +37,6 @@ public class Wizard extends Character {
         this.potions = potions;
     }
 
-
-//    public Pet getPet() {
-//        return pet;
-//    }
-//
-//    public void setPet(Pet pet) {
-//        this.pet = pet;
-//    }
-//
-//    public Wand getWand() {
-//        return wand;
-//    }
-//
-//    public void setWand(Wand wand) {
-//        this.wand = wand;
-//    }
-//
-//    public House getHouse() {
-//        return house;
-//    }
-//
-//    public void setHouse(House house) {
-//        this.house = house;
-//    }
-//
-//    public List<Spell> getKnownSpells() {
-//        return knownSpells;
-//    }
-//
-//    public void setKnownSpells(List<Spell> knownSpells) {
-//        this.knownSpells = knownSpells;
-//    }
-//
-//    public List<ForbiddenSpell> getKnownForbiddenSpells() {
-//        return knownForbiddenSpells;
-//    }
-//
-//    public void setKnownForbiddenSpells(List<ForbiddenSpell> knownForbiddenSpells) {
-//        this.knownForbiddenSpells = knownForbiddenSpells;
-//    }
-//
-//    public List<Potion> getPotions() {
-//        return potions;
-//    }
-//
-//    public void setPotions(List<Potion> potions) {
-//        this.potions = potions;
-//    }
 
     public void attack(Wizard wizard, Character enemy, Spell spell) {
         Random random = new Random();

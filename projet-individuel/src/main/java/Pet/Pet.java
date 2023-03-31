@@ -1,7 +1,5 @@
 package Pet;
 
-import Wand.Wand;
-
 import lombok.Getter;
 
 @Getter
@@ -24,21 +22,6 @@ public enum Pet {
         this.preciseBonus = preciseBonus;
     }
 
-//    public int getPharmacyBonus() {
-//        return pharmacyBonus;
-//    }
-//
-//    public int getAttackBonus() {
-//        return attackBonus;
-//    }
-//
-//    public int getDefenseBonus() {
-//        return defenseBonus;
-//    }
-//
-//    public int getPreciseBonus() {
-//        return preciseBonus;
-//    }
 
     public static Pet choosePet(int pet) {
         switch (pet) {
