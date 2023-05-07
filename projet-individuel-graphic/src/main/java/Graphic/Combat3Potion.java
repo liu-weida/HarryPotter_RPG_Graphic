@@ -286,7 +286,11 @@ public class Combat3Potion extends Application{
         textField3.setStyle(" -fx-translate-x: 515; -fx-translate-y:-10;-fx-font-size: 25px; -fx-text-fill: #e7c254; -fx-font-family:Courier New;-fx-background-color: transparent; -fx-border-color: transparent;");
 
 
+<<<<<<< HEAD
         StackPane stackPane = new StackPane(imageView, imageView6,buttonCreate1, buttonCreate2, buttonCreate3, buttonCreate4,textField0,textField1,textField2,textField3);
+=======
+        StackPane stackPane = new StackPane(imageView, buttonCreate1, buttonCreate2, buttonCreate3, buttonCreate4,textField0,textField1,textField2,textField3);
+>>>>>>> c31add4f7965e31170118d219d5ddf7199c9d4cc
 
 
         buttonCreate1.setOnAction(new EventHandler<ActionEvent>() {

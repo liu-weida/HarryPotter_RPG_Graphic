@@ -116,7 +116,11 @@ public class Combat2Spell2 extends Application {
 
 
         // 创建 StackPane 布局容器，并将图像和按钮添加到其中
+<<<<<<< HEAD
         StackPane stackPane = new StackPane(imageView, imageView6, textField,textField0,textField1,textField2,textField3);
+=======
+        StackPane stackPane = new StackPane(imageView, textField,textField0,textField1,textField2,textField3);
+>>>>>>> c31add4f7965e31170118d219d5ddf7199c9d4cc
         // 创建场景并显示
         Scene scene = new Scene(stackPane, 1120, 700);
 

@@ -32,7 +32,10 @@ public class Game {
         createPlayers();
         assignHouse();
         Properties();//显示属性
+<<<<<<< HEAD
 
+=======
+>>>>>>> c31add4f7965e31170118d219d5ddf7199c9d4cc
     }
 
 
